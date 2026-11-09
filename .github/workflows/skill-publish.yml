@@ -1,85 +1,86 @@
 name: Skill Publish
 
-on:
-  workflow_call:
-    inputs:
-      skill_path:
-        description: Optional path to one skill folder. When set, only this skill is processed.
-        required: false
-        type: string
-        default: ""
-      root:
-        description: Directory containing skill folders for catalog publishing.
-        required: false
-        type: string
-        default: skills
-      dry_run:
-        description: Preview only. When true, no publish mutation is performed.
-        required: false
-        type: boolean
-        default: true
-      owner:
-        description: Optional owner/publisher handle for org publishing.
-        required: false
-        type: string
-        default: ""
-      tags:
-        description: Optional comma-separated tags override.
-        required: false
-        type: string
-        default: latest
-      changelog:
-        description: Optional changelog text applied to every skill published by this run.
-        required: false
-        type: string
-        default: ""
-      categories:
-        description: Optional comma-separated category slugs applied to every skill published by this run.
-        required: false
-        type: string
-        default: ""
-      topics:
-        description: Optional comma-separated topics applied to every skill published by this run.
-        required: false
-        type: string
-        default: ""
-      clear_categories:
-        description: >-
-          Publish an empty category list, clearing the categories already set on every skill
-          published by this run. Cannot be combined with a non-empty categories input.
-        required: false
-        type: boolean
-        default: false
-      clear_topics:
-        description: >-
-          Publish an empty topic list, clearing the topics already set on every skill published
-          by this run. Cannot be combined with a non-empty topics input.
-        required: false
-        type: boolean
-        default: false
-      registry:
-        description: ClawHub registry URL.
-        required: false
-        type: string
-        default: https://clawhub.ai
-      site:
-        description: ClawHub site URL.
-        required: false
-        type: string
-        default: https://clawhub.ai
-      ref:
-        description: Optional caller repository ref to check out.
-        required: false
-        type: string
-        default: ""
-    secrets:
-      clawhub_token:
-        required: false
-    outputs:
-      publish_json:
-        description: Structured JSON output from skill publishing.
-        value: ${{ jobs.publish.outputs.publish_json }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       skill_path:
+#         description: Optional path to one skill folder. When set, only this skill is processed.
+#         required: false
+#         type: string
+#         default: ""
+#       root:
+#         description: Directory containing skill folders for catalog publishing.
+#         required: false
+#         type: string
+#         default: skills
+#       dry_run:
+#         description: Preview only. When true, no publish mutation is performed.
+#         required: false
+#         type: boolean
+#         default: true
+#       owner:
+#         description: Optional owner/publisher handle for org publishing.
+#         required: false
+#         type: string
+#         default: ""
+#       tags:
+#         description: Optional comma-separated tags override.
+#         required: false
+#         type: string
+#         default: latest
+#       changelog:
+#         description: Optional changelog text applied to every skill published by this run.
+#         required: false
+#         type: string
+#         default: ""
+#       categories:
+#         description: Optional comma-separated category slugs applied to every skill published by this run.
+#         required: false
+#         type: string
+#         default: ""
+#       topics:
+#         description: Optional comma-separated topics applied to every skill published by this run.
+#         required: false
+#         type: string
+#         default: ""
+#       clear_categories:
+#         description: >-
+#           Publish an empty category list, clearing the categories already set on every skill
+#           published by this run. Cannot be combined with a non-empty categories input.
+#         required: false
+#         type: boolean
+#         default: false
+#       clear_topics:
+#         description: >-
+#           Publish an empty topic list, clearing the topics already set on every skill published
+#           by this run. Cannot be combined with a non-empty topics input.
+#         required: false
+#         type: boolean
+#         default: false
+#       registry:
+#         description: ClawHub registry URL.
+#         required: false
+#         type: string
+#         default: https://clawhub.ai
+#       site:
+#         description: ClawHub site URL.
+#         required: false
+#         type: string
+#         default: https://clawhub.ai
+#       ref:
+#         description: Optional caller repository ref to check out.
+#         required: false
+#         type: string
+#         default: ""
+#     secrets:
+#       clawhub_token:
+#         required: false
+#     outputs:
+#       publish_json:
+#         description: Structured JSON output from skill publishing.
+#         value: ${{ jobs.publish.outputs.publish_json }}
+# 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 

@@ -1,19 +1,20 @@
 name: ClawHub Scheduled Live Checks
 
-on:
-  schedule:
-    - cron: "17 5 * * *"
-  workflow_dispatch:
-    inputs:
-      github-repo:
-        description: GitHub skills repo to use for the source-backed canary
-        required: false
-        default: openclaw/agent-skills
-      github-skill:
-        description: Skill slug to verify from the GitHub skills repo
-        required: false
-        default: handoff
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "17 5 * * *"
+#   workflow_dispatch:
+#     inputs:
+#       github-repo:
+#         description: GitHub skills repo to use for the source-backed canary
+#         required: false
+#         default: openclaw/agent-skills
+#       github-skill:
+#         description: Skill slug to verify from the GitHub skills repo
+#         required: false
+#         default: handoff
+# 
 concurrency:
   group: clawhub-scheduled-live-checks-${{ github.ref }}
   cancel-in-progress: false

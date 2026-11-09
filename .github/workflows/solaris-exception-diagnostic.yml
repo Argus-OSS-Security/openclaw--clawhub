@@ -1,6 +1,7 @@
 name: Nonpublishing Solaris exception diagnostic
-on:
-  workflow_dispatch: null
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch: null
 permissions:
   contents: read
 concurrency:

@@ -1,27 +1,28 @@
 name: Preview Proof
 
-on:
-  workflow_dispatch:
-    inputs:
-      preview_url:
-        description: "Vercel preview URL to verify"
-        required: true
-        type: string
-      checkout_ref:
-        description: "Optional git ref or SHA to check out; use this when dispatching from main for a PR preview"
-        required: false
-        type: string
-      expected_sha:
-        description: "Expected git SHA after checkout"
-        required: true
-        type: string
-
-      fixture_slug:
-        description: "Existing seeded preview skill to verify; never creates data"
-        required: false
-        default: "02-team-operation"
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       preview_url:
+#         description: "Vercel preview URL to verify"
+#         required: true
+#         type: string
+#       checkout_ref:
+#         description: "Optional git ref or SHA to check out; use this when dispatching from main for a PR preview"
+#         required: false
+#         type: string
+#       expected_sha:
+#         description: "Expected git SHA after checkout"
+#         required: true
+#         type: string
+# 
+#       fixture_slug:
+#         description: "Existing seeded preview skill to verify; never creates data"
+#         required: false
+#         default: "02-team-operation"
+#         type: string
+# 
 permissions:
   contents: read
 

@@ -1,13 +1,14 @@
 name: Crabbox Testbox Backend
 
-on:
-  workflow_dispatch:
-    inputs:
-      testbox_id:
-        type: string
-        description: "Testbox session ID"
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       testbox_id:
+#         type: string
+#         description: "Testbox session ID"
+#         required: true
+# 
 permissions:
   contents: read
 

@@ -1,9 +1,10 @@
 name: Catalog Feed Schema Version Guard
 
-on:
-  pull_request_target:
-    types: [opened, synchronize, reopened, labeled, unlabeled]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request_target:
+#     types: [opened, synchronize, reopened, labeled, unlabeled]
+# 
 permissions:
   contents: read
   issues: write

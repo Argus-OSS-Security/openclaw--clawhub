@@ -1,35 +1,36 @@
 name: skills.sh Production Sync
 run-name: ${{ inputs.deploy_experiment_sha != '' && '2026-10-05 single skills.sh deployment overlap experiment' || 'skills.sh Production Sync' }}
 
-on:
-  schedule:
-    # Daily at 03:00 Pacific; GitHub applies the DST offset for the named timezone.
-    - cron: "0 3 * * *"
-      timezone: "America/Los_Angeles"
-  workflow_dispatch:
-    inputs:
-      deploy_experiment_sha:
-        description: "Temporary Patrick-authorized overlap experiment: exact reviewed main SHA"
-        required: false
-        default: ""
-        type: string
-      deploy_experiment_confirm:
-        description: "One attempt only: deploy-once-with-enabled-skills-sh"
-        required: false
-        default: ""
-        type: string
-      deploy_experiment_ci_run:
-        description: "Successful CI push run for that exact main SHA"
-        required: false
-        default: ""
-        type: string
-      deploy_experiment_test_run:
-        description: "Successful Deploy Test run for that exact main SHA"
-        required: false
-        default: ""
-        type: string
-
-# Coalesce recurring syncs; the one controlled deploy must survive new schedules.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Daily at 03:00 Pacific; GitHub applies the DST offset for the named timezone.
+#     - cron: "0 3 * * *"
+#       timezone: "America/Los_Angeles"
+#   workflow_dispatch:
+#     inputs:
+#       deploy_experiment_sha:
+#         description: "Temporary Patrick-authorized overlap experiment: exact reviewed main SHA"
+#         required: false
+#         default: ""
+#         type: string
+#       deploy_experiment_confirm:
+#         description: "One attempt only: deploy-once-with-enabled-skills-sh"
+#         required: false
+#         default: ""
+#         type: string
+#       deploy_experiment_ci_run:
+#         description: "Successful CI push run for that exact main SHA"
+#         required: false
+#         default: ""
+#         type: string
+#       deploy_experiment_test_run:
+#         description: "Successful Deploy Test run for that exact main SHA"
+#         required: false
+#         default: ""
+#         type: string
+# 
+# # Coalesce recurring syncs; the one controlled deploy must survive new schedules.
 concurrency:
   group: ${{ inputs.deploy_experiment_sha != '' && format('skills-sh-deploy-experiment-{0}', github.ref) || format('skills-sh-sync-{0}', github.ref) }}
   queue: single

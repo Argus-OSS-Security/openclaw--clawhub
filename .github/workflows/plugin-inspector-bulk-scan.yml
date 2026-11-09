@@ -1,54 +1,55 @@
 name: Plugin Inspector Bulk Scan
 
-on:
-  schedule:
-    - cron: "17 7 * * *"
-  # ClawHub dispatches one targeted, persisted scan per accepted plugin release.
-  # Plugin Inspector is monitoring only; it never gates publication.
-  repository_dispatch:
-    types: [clawhub-plugin-inspector-release-scan]
-  workflow_dispatch:
-    inputs:
-      batch_size:
-        description: "Maximum plugin releases to scan"
-        required: false
-        default: "25"
-      dry_run:
-        description: "Preview impact without persisting findings or sending emails"
-        required: false
-        default: "true"
-        type: boolean
-      dry_run_max_batches:
-        description: "Maximum preview batches to scan when dry_run is enabled"
-        required: false
-        default: "20"
-      notify_owners:
-        description: "Email plugin owners from an explicitly selected reviewed scan"
-        required: false
-        default: false
-        type: boolean
-      notification_only:
-        description: "Notify from the exact stored scan result without inspecting packages again"
-        required: false
-        default: false
-        type: boolean
-      notification_source_run_id:
-        description: "Successful no-email scan run whose exact artifact is approved for notification"
-        required: false
-        default: ""
-      package_names:
-        description: "Optional comma or newline separated package names to scan instead of the rolling cursor"
-        required: false
-        default: ""
-      source_pr:
-        description: "Merged PR number that triggered this scan, when dispatched automatically"
-        required: false
-        default: ""
-      source_sha:
-        description: "Merged commit SHA that triggered this scan, when dispatched automatically"
-        required: false
-        default: ""
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "17 7 * * *"
+#   # ClawHub dispatches one targeted, persisted scan per accepted plugin release.
+#   # Plugin Inspector is monitoring only; it never gates publication.
+#   repository_dispatch:
+#     types: [clawhub-plugin-inspector-release-scan]
+#   workflow_dispatch:
+#     inputs:
+#       batch_size:
+#         description: "Maximum plugin releases to scan"
+#         required: false
+#         default: "25"
+#       dry_run:
+#         description: "Preview impact without persisting findings or sending emails"
+#         required: false
+#         default: "true"
+#         type: boolean
+#       dry_run_max_batches:
+#         description: "Maximum preview batches to scan when dry_run is enabled"
+#         required: false
+#         default: "20"
+#       notify_owners:
+#         description: "Email plugin owners from an explicitly selected reviewed scan"
+#         required: false
+#         default: false
+#         type: boolean
+#       notification_only:
+#         description: "Notify from the exact stored scan result without inspecting packages again"
+#         required: false
+#         default: false
+#         type: boolean
+#       notification_source_run_id:
+#         description: "Successful no-email scan run whose exact artifact is approved for notification"
+#         required: false
+#         default: ""
+#       package_names:
+#         description: "Optional comma or newline separated package names to scan instead of the rolling cursor"
+#         required: false
+#         default: ""
+#       source_pr:
+#         description: "Merged PR number that triggered this scan, when dispatched automatically"
+#         required: false
+#         default: ""
+#       source_sha:
+#         description: "Merged commit SHA that triggered this scan, when dispatched automatically"
+#         required: false
+#         default: ""
+# 
 permissions:
   actions: read
   contents: read

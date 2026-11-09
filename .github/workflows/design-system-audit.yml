@@ -1,11 +1,12 @@
 name: Weekly Design System Audit
 
-on:
-  schedule:
-    # Monday at 08:17 Pacific during daylight saving time. GitHub cron uses UTC.
-    - cron: "17 15 * * 1"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Monday at 08:17 Pacific during daylight saving time. GitHub cron uses UTC.
+#     - cron: "17 15 * * 1"
+#   workflow_dispatch:
+# 
 permissions: {}
 
 concurrency:

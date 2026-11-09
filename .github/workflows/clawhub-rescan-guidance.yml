@@ -1,15 +1,16 @@
 name: ClawHub Rescan Guidance
 
-on:
-  issues:
-    types: [labeled]
-  workflow_dispatch:
-    inputs:
-      issue:
-        description: "Issue number to check"
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   issues:
+#     types: [labeled]
+#   workflow_dispatch:
+#     inputs:
+#       issue:
+#         description: "Issue number to check"
+#         required: true
+#         type: string
+# 
 permissions:
   contents: read
   issues: write

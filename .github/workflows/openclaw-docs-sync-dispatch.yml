@@ -1,14 +1,15 @@
 name: OpenClaw Docs Sync Dispatch
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - docs/**
-      - .github/workflows/openclaw-docs-sync-dispatch.yml
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - docs/**
+#       - .github/workflows/openclaw-docs-sync-dispatch.yml
+#   workflow_dispatch:
+# 
 permissions:
   contents: read
 

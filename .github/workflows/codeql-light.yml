@@ -1,38 +1,39 @@
 name: CodeQL Light
 
-on:
-  workflow_dispatch:
-    inputs:
-      profile:
-        description: CodeQL light profile to run
-        required: false
-        default: all
-        type: choice
-        options:
-          - all
-          - backend-api
-          - frontend-publish
-          - cli-package
-          - repository-automation
-          - actions
-  pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
-    paths:
-      - ".gitattributes"
-      - "**/.gitattributes"
-      - ".github/actions/**"
-      - ".github/codeql/**"
-      - ".github/workflows/**"
-      - "convex/**"
-      - "packages/clawhub/**"
-      - "packages/schema/**"
-      - "scripts/**"
-      - "src/**"
-      - "bun.lock"
-      - "package.json"
-  schedule:
-    - cron: "17 */6 * * *"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       profile:
+#         description: CodeQL light profile to run
+#         required: false
+#         default: all
+#         type: choice
+#         options:
+#           - all
+#           - backend-api
+#           - frontend-publish
+#           - cli-package
+#           - repository-automation
+#           - actions
+#   pull_request:
+#     types: [opened, synchronize, reopened, ready_for_review]
+#     paths:
+#       - ".gitattributes"
+#       - "**/.gitattributes"
+#       - ".github/actions/**"
+#       - ".github/codeql/**"
+#       - ".github/workflows/**"
+#       - "convex/**"
+#       - "packages/clawhub/**"
+#       - "packages/schema/**"
+#       - "scripts/**"
+#       - "src/**"
+#       - "bun.lock"
+#       - "package.json"
+#   schedule:
+#     - cron: "17 */6 * * *"
+# 
 concurrency:
   group: codeql-light-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.event_name == 'pull_request' && github.event.pull_request.number || github.event_name == 'schedule' && 'schedule' || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}

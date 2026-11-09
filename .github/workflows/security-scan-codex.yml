@@ -1,40 +1,41 @@
 name: Security Scan Codex Worker
 
-on:
-  repository_dispatch:
-    types: [clawhub-security-scan]
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Deployment to scan"
-        type: choice
-        options: [Production, Test]
-        default: Production
-      limit:
-        description: "Deprecated alias for batch-limit"
-        required: false
-        default: ""
-      batch-limit:
-        description: "Maximum Codex scans to run in parallel per worker shard"
-        required: true
-        default: "4"
-      assigned-jobs:
-        description: "Optional JSON of disjoint bulk skill job ID arrays, one per shared worker"
-        required: false
-        default: ""
-      shared-workers:
-        description: "Shared machines for assigned jobs; drain the old pool before changing"
-        type: choice
-        options: ["9", "18"]
-        default: "9"
-      max-jobs:
-        description: "Optional total jobs cap per worker shard"
-        required: false
-        default: ""
-      max-runtime-minutes:
-        description: "Stop claiming new jobs after this many minutes"
-        required: true
-        default: "12"
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   repository_dispatch:
+#     types: [clawhub-security-scan]
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         description: "Deployment to scan"
+#         type: choice
+#         options: [Production, Test]
+#         default: Production
+#       limit:
+#         description: "Deprecated alias for batch-limit"
+#         required: false
+#         default: ""
+#       batch-limit:
+#         description: "Maximum Codex scans to run in parallel per worker shard"
+#         required: true
+#         default: "4"
+#       assigned-jobs:
+#         description: "Optional JSON of disjoint bulk skill job ID arrays, one per shared worker"
+#         required: false
+#         default: ""
+#       shared-workers:
+#         description: "Shared machines for assigned jobs; drain the old pool before changing"
+#         type: choice
+#         options: ["9", "18"]
+#         default: "9"
+#       max-jobs:
+#         description: "Optional total jobs cap per worker shard"
+#         required: false
+#         default: ""
+#       max-runtime-minutes:
+#         description: "Stop claiming new jobs after this many minutes"
+#         required: true
+#         default: "12"
 permissions:
   contents: read
   packages: read

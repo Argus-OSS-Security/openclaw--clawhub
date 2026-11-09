@@ -1,51 +1,52 @@
 name: Plugin Category Refresh
 
-on:
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: "Fixed operator action (accept rehearses without applying categories)"
-        type: choice
-        required: true
-        default: status
-        options: [status, preview, report, accept, apply, rollback]
-      expected_sha:
-        description: "Exact main commit already deployed to production"
-        type: string
-        required: true
-      run_id:
-        description: "Stable category refresh run ID; reuse it when resuming"
-        type: string
-        required: true
-      cursor:
-        description: "Previous resumeCursor; blank starts at the beginning"
-        type: string
-        default: ""
-      package_names:
-        description: "Optional JSON array of 1–10 exact package names; preview only, max_pages=1, no cursor"
-        type: string
-        default: "[]"
-      max_pages:
-        description: "Bounded pages per dispatch (1–20)"
-        type: string
-        default: "10"
-      workers:
-        description: "Concurrent preview actions (1–4)"
-        type: string
-        default: "3"
-      reviewed_ids:
-        description: "JSON array of at most 100 journal IDs; report computes their review hash"
-        type: string
-        default: "[]"
-      corrections:
-        description: "Optional report/accept JSON: [{id,category,evidence}]; generated/fallback proposals only"
-        type: string
-        default: "[]"
-      review_hash:
-        description: "Exact report SHA-256 required by accept, apply, and rollback"
-        type: string
-        default: ""
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       mode:
+#         description: "Fixed operator action (accept rehearses without applying categories)"
+#         type: choice
+#         required: true
+#         default: status
+#         options: [status, preview, report, accept, apply, rollback]
+#       expected_sha:
+#         description: "Exact main commit already deployed to production"
+#         type: string
+#         required: true
+#       run_id:
+#         description: "Stable category refresh run ID; reuse it when resuming"
+#         type: string
+#         required: true
+#       cursor:
+#         description: "Previous resumeCursor; blank starts at the beginning"
+#         type: string
+#         default: ""
+#       package_names:
+#         description: "Optional JSON array of 1–10 exact package names; preview only, max_pages=1, no cursor"
+#         type: string
+#         default: "[]"
+#       max_pages:
+#         description: "Bounded pages per dispatch (1–20)"
+#         type: string
+#         default: "10"
+#       workers:
+#         description: "Concurrent preview actions (1–4)"
+#         type: string
+#         default: "3"
+#       reviewed_ids:
+#         description: "JSON array of at most 100 journal IDs; report computes their review hash"
+#         type: string
+#         default: "[]"
+#       corrections:
+#         description: "Optional report/accept JSON: [{id,category,evidence}]; generated/fallback proposals only"
+#         type: string
+#         default: "[]"
+#       review_hash:
+#         description: "Exact report SHA-256 required by accept, apply, and rollback"
+#         type: string
+#         default: ""
+# 
 concurrency:
   group: plugin-category-refresh-production
   cancel-in-progress: false

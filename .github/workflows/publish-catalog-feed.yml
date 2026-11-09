@@ -1,16 +1,17 @@
 name: Publish Hosted Catalog Feed
 
-on:
-  schedule:
-    - cron: "17 */6 * * *"
-  workflow_dispatch:
-    inputs:
-      expires_in_days:
-        description: "How long the published feed remains fresh"
-        required: true
-        default: "7"
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "17 */6 * * *"
+#   workflow_dispatch:
+#     inputs:
+#       expires_in_days:
+#         description: "How long the published feed remains fresh"
+#         required: true
+#         default: "7"
+#         type: string
+# 
 concurrency:
   group: publish-catalog-feed
   cancel-in-progress: true

@@ -1,28 +1,29 @@
 name: Skill Card Worker
 
-on:
-  workflow_run:
-    workflows: ["Security Scan Codex Worker"]
-    types: [completed]
-  workflow_dispatch:
-    inputs:
-      fixture-only:
-        description: "Generate one benign fixture card without accessing the production queue"
-        type: boolean
-        default: false
-      batch-limit:
-        description: "Maximum Skill Card jobs to run in parallel per worker shard"
-        required: true
-        default: "4"
-      max-jobs:
-        description: "Optional total jobs cap per worker shard"
-        required: false
-        default: ""
-      max-runtime-minutes:
-        description: "Stop claiming new batches after this many minutes"
-        required: true
-        default: "40"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_run:
+#     workflows: ["Security Scan Codex Worker"]
+#     types: [completed]
+#   workflow_dispatch:
+#     inputs:
+#       fixture-only:
+#         description: "Generate one benign fixture card without accessing the production queue"
+#         type: boolean
+#         default: false
+#       batch-limit:
+#         description: "Maximum Skill Card jobs to run in parallel per worker shard"
+#         required: true
+#         default: "4"
+#       max-jobs:
+#         description: "Optional total jobs cap per worker shard"
+#         required: false
+#         default: ""
+#       max-runtime-minutes:
+#         description: "Stop claiming new batches after this many minutes"
+#         required: true
+#         default: "40"
+# 
 permissions:
   contents: read
 

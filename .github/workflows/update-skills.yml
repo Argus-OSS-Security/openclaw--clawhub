@@ -1,10 +1,11 @@
 name: Update skills
 
-on:
-  schedule:
-    - cron: "17 15 * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "17 15 * * *"
+#   workflow_dispatch:
+# 
 permissions:
   contents: write
 

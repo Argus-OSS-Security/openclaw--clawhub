@@ -1,15 +1,16 @@
 name: Deploy Staging
 
-on:
-  push:
-    branches: [staging]
-  workflow_dispatch:
-    inputs:
-      expected_sha:
-        description: Exact current staging branch SHA to deploy
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches: [staging]
+#   workflow_dispatch:
+#     inputs:
+#       expected_sha:
+#         description: Exact current staging branch SHA to deploy
+#         required: true
+#         type: string
+# 
 concurrency:
   group: deploy-staging
   cancel-in-progress: false

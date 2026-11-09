@@ -1,23 +1,24 @@
 name: Deploy Test
 
-on:
-  workflow_run:
-    workflows: ["CI"]
-    types: [completed]
-    branches: [main]
-  pull_request:
-    types: [synchronize, labeled]
-  workflow_dispatch:
-    inputs:
-      expected_sha:
-        description: Exact branch SHA permitted for a temporary protected Test deploy
-        required: false
-        type: string
-      branch_test_confirm:
-        description: Confirmation phrase for an explicitly guarded branch-only Test deploy
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_run:
+#     workflows: ["CI"]
+#     types: [completed]
+#     branches: [main]
+#   pull_request:
+#     types: [synchronize, labeled]
+#   workflow_dispatch:
+#     inputs:
+#       expected_sha:
+#         description: Exact branch SHA permitted for a temporary protected Test deploy
+#         required: false
+#         type: string
+#       branch_test_confirm:
+#         description: Confirmation phrase for an explicitly guarded branch-only Test deploy
+#         required: false
+#         type: string
+# 
 concurrency:
   group: deploy-test
   cancel-in-progress: false

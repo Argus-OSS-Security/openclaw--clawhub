@@ -1,22 +1,23 @@
 name: Skill Manual Override Cleanup
 
-on:
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: "Preview or apply the cleanup"
-        required: true
-        default: preview
-        type: choice
-        options:
-          - preview
-          - apply
-      confirm:
-        description: "For apply, enter: remove-skill-manual-overrides"
-        required: false
-        default: ""
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       mode:
+#         description: "Preview or apply the cleanup"
+#         required: true
+#         default: preview
+#         type: choice
+#         options:
+#           - preview
+#           - apply
+#       confirm:
+#         description: "For apply, enter: remove-skill-manual-overrides"
+#         required: false
+#         default: ""
+#         type: string
+# 
 concurrency:
   group: skill-manual-override-cleanup-production
   cancel-in-progress: false

@@ -1,10 +1,11 @@
 name: Skill Evaluation Worker
 
-on:
-  repository_dispatch:
-    types: [clawhub-skill-evaluation]
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   repository_dispatch:
+#     types: [clawhub-skill-evaluation]
+#   workflow_dispatch:
+# 
 permissions:
   contents: read
 

@@ -1,56 +1,57 @@
 name: Security Dataset Snapshot
 
-on:
-  workflow_dispatch:
-    inputs:
-      upload:
-        description: "Upload sanitized dataset files to Hugging Face"
-        required: true
-        default: "false"
-        type: choice
-        options:
-          - "false"
-          - "true"
-      limit:
-        description: "Optional source artifact cap for validation runs"
-        required: false
-        default: ""
-      hf-revision:
-        description: "Hugging Face branch/revision to upload to"
-        required: true
-        default: "main"
-      page-size:
-        description: "Live export page size per Convex request"
-        required: true
-        default: "25"
-      min-page-size:
-        description: "Smallest page size to retry after Convex timeouts"
-        required: true
-        default: "1"
-      batch-pages:
-        description: "Live export pages per Convex request"
-        required: true
-        default: "1"
-      page-timeout-ms:
-        description: "Maximum milliseconds for a single Convex export page request"
-        required: true
-        default: "600000"
-      concurrency:
-        description: "Concurrent live export shards"
-        required: true
-        default: "2"
-      shards:
-        description: "Created-at shards per source kind"
-        required: true
-        default: "48"
-      reuse-shards-run-id:
-        description: "Optional previous successful shard run id to merge/publish without re-exporting"
-        required: false
-        default: ""
-  schedule:
-    # Sunday night Pacific time: 10:17 PM PDT / 9:17 PM PST.
-    - cron: "17 5 * * 1"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       upload:
+#         description: "Upload sanitized dataset files to Hugging Face"
+#         required: true
+#         default: "false"
+#         type: choice
+#         options:
+#           - "false"
+#           - "true"
+#       limit:
+#         description: "Optional source artifact cap for validation runs"
+#         required: false
+#         default: ""
+#       hf-revision:
+#         description: "Hugging Face branch/revision to upload to"
+#         required: true
+#         default: "main"
+#       page-size:
+#         description: "Live export page size per Convex request"
+#         required: true
+#         default: "25"
+#       min-page-size:
+#         description: "Smallest page size to retry after Convex timeouts"
+#         required: true
+#         default: "1"
+#       batch-pages:
+#         description: "Live export pages per Convex request"
+#         required: true
+#         default: "1"
+#       page-timeout-ms:
+#         description: "Maximum milliseconds for a single Convex export page request"
+#         required: true
+#         default: "600000"
+#       concurrency:
+#         description: "Concurrent live export shards"
+#         required: true
+#         default: "2"
+#       shards:
+#         description: "Created-at shards per source kind"
+#         required: true
+#         default: "48"
+#       reuse-shards-run-id:
+#         description: "Optional previous successful shard run id to merge/publish without re-exporting"
+#         required: false
+#         default: ""
+#   schedule:
+#     # Sunday night Pacific time: 10:17 PM PDT / 9:17 PM PST.
+#     - cron: "17 5 * * 1"
+# 
 permissions:
   actions: read
   contents: read

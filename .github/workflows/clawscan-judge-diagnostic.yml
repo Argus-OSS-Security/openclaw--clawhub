@@ -1,86 +1,87 @@
 name: Nonproduction ClawScan judge diagnostic
 run-name: ${{ contains(fromJSON('["original-038-encrypted","original-079-encrypted","original-004-encrypted","original-016-encrypted","original-017-encrypted","original-026-encrypted","original-027-encrypted","original-074-encrypted","original-008-encrypted","original-011-encrypted","original-036-encrypted","original-033-encrypted","original-065-encrypted","original-073-encrypted","original-042-encrypted","original-055-encrypted","original-039-encrypted","original-010-encrypted","original-019-encrypted","original-005-encrypted","original-006-encrypted","original-015-encrypted","original-071-encrypted","original-007-encrypted","original-009-encrypted","original-014-encrypted","original-013-encrypted","original-029-encrypted","original-030-encrypted","original-002-encrypted","original-003-encrypted","original-067-encrypted"]'), inputs.fixture) && format('{0} {1}', inputs.fixture, inputs.age_recipient) || 'Nonproduction ClawScan judge diagnostic' }}
 
-on:
-  workflow_dispatch:
-    inputs:
-      fixture:
-        description: "Nonpublishing fixed controls; original scanner-only never auto-runs full profile"
-        required: true
-        type: choice
-        options:
-          [
-            tiny,
-            incident,
-            receipt-incident,
-            small-timeout-paired,
-            original-scanner-only,
-            original-candidate-full,
-            original-candidate-290-full,
-            original-038-encrypted,
-            original-079-encrypted,
-            original-004-encrypted,
-            original-016-encrypted,
-            original-017-encrypted,
-            original-026-encrypted,
-            original-027-encrypted,
-            original-074-encrypted,
-            original-008-encrypted,
-            original-011-encrypted,
-            original-036-encrypted,
-            original-033-encrypted,
-            original-065-encrypted,
-            original-073-encrypted,
-            original-042-encrypted,
-            original-055-encrypted,
-            original-039-encrypted,
-            original-010-encrypted,
-            original-019-encrypted,
-            original-005-encrypted,
-            original-006-encrypted,
-            original-015-encrypted,
-            original-071-encrypted,
-            original-007-encrypted,
-            original-009-encrypted,
-            original-014-encrypted,
-            original-013-encrypted,
-            original-029-encrypted,
-            original-030-encrypted,
-            original-002-encrypted,
-            original-003-encrypted,
-            original-067-encrypted,
-          ]
-        default: tiny
-      source:
-        description: "Reviewed repository pin or exact installed incident baseline (never latest)"
-        required: true
-        type: choice
-        options: [reviewed, incident]
-        default: reviewed
-      runner:
-        description: "Disposable runner; Ubuntu22 permits tiny controls or fixed original encrypted full capture"
-        type: choice
-        required: true
-        default: blacksmith-16vcpu-ubuntu-2404
-        options: [blacksmith-16vcpu-ubuntu-2404, ubuntu-22.04]
-      age_recipient:
-        description: "Per-run public age1 X25519 recipient; required only for fixed originals, never an identity"
-        type: string
-        required: false
-        default: ""
-      consumer:
-        description: "Workflow source, or the fixed reviewed recovery consumer (never latest)"
-        type: choice
-        required: true
-        options: [workflow, recovery-approved]
-        default: workflow
-      lane:
-        description: "Root-coordinated diagnostic lane; a lane must be idle before dispatch"
-        type: choice
-        required: true
-        options: ["0", "1"]
-        default: "0"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       fixture:
+#         description: "Nonpublishing fixed controls; original scanner-only never auto-runs full profile"
+#         required: true
+#         type: choice
+#         options:
+#           [
+#             tiny,
+#             incident,
+#             receipt-incident,
+#             small-timeout-paired,
+#             original-scanner-only,
+#             original-candidate-full,
+#             original-candidate-290-full,
+#             original-038-encrypted,
+#             original-079-encrypted,
+#             original-004-encrypted,
+#             original-016-encrypted,
+#             original-017-encrypted,
+#             original-026-encrypted,
+#             original-027-encrypted,
+#             original-074-encrypted,
+#             original-008-encrypted,
+#             original-011-encrypted,
+#             original-036-encrypted,
+#             original-033-encrypted,
+#             original-065-encrypted,
+#             original-073-encrypted,
+#             original-042-encrypted,
+#             original-055-encrypted,
+#             original-039-encrypted,
+#             original-010-encrypted,
+#             original-019-encrypted,
+#             original-005-encrypted,
+#             original-006-encrypted,
+#             original-015-encrypted,
+#             original-071-encrypted,
+#             original-007-encrypted,
+#             original-009-encrypted,
+#             original-014-encrypted,
+#             original-013-encrypted,
+#             original-029-encrypted,
+#             original-030-encrypted,
+#             original-002-encrypted,
+#             original-003-encrypted,
+#             original-067-encrypted,
+#           ]
+#         default: tiny
+#       source:
+#         description: "Reviewed repository pin or exact installed incident baseline (never latest)"
+#         required: true
+#         type: choice
+#         options: [reviewed, incident]
+#         default: reviewed
+#       runner:
+#         description: "Disposable runner; Ubuntu22 permits tiny controls or fixed original encrypted full capture"
+#         type: choice
+#         required: true
+#         default: blacksmith-16vcpu-ubuntu-2404
+#         options: [blacksmith-16vcpu-ubuntu-2404, ubuntu-22.04]
+#       age_recipient:
+#         description: "Per-run public age1 X25519 recipient; required only for fixed originals, never an identity"
+#         type: string
+#         required: false
+#         default: ""
+#       consumer:
+#         description: "Workflow source, or the fixed reviewed recovery consumer (never latest)"
+#         type: choice
+#         required: true
+#         options: [workflow, recovery-approved]
+#         default: workflow
+#       lane:
+#         description: "Root-coordinated diagnostic lane; a lane must be idle before dispatch"
+#         type: choice
+#         required: true
+#         options: ["0", "1"]
+#         default: "0"
+# 
 permissions:
   contents: read
 

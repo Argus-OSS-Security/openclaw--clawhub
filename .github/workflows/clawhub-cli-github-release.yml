@@ -1,30 +1,31 @@
 name: ClawHub CLI GitHub Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: Release tag to create or repair, for example v0.17.0
-        required: true
-        type: string
-      main_run_id:
-        description: Optional successful main CI run id to include in release proof
-        required: false
-        type: string
-      preflight_run_id:
-        description: Optional successful CLI npm preflight run id to include in release proof
-        required: false
-        type: string
-      publish_run_id:
-        description: Optional successful CLI npm publish run id to include in release proof
-        required: false
-        type: string
-      update_existing:
-        description: Update an existing GitHub Release instead of failing
-        required: true
-        default: false
-        type: boolean
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       tag:
+#         description: Release tag to create or repair, for example v0.17.0
+#         required: true
+#         type: string
+#       main_run_id:
+#         description: Optional successful main CI run id to include in release proof
+#         required: false
+#         type: string
+#       preflight_run_id:
+#         description: Optional successful CLI npm preflight run id to include in release proof
+#         required: false
+#         type: string
+#       publish_run_id:
+#         description: Optional successful CLI npm publish run id to include in release proof
+#         required: false
+#         type: string
+#       update_existing:
+#         description: Update an existing GitHub Release instead of failing
+#         required: true
+#         default: false
+#         type: boolean
+# 
 concurrency:
   group: clawhub-cli-github-release-${{ inputs.tag }}
   cancel-in-progress: false

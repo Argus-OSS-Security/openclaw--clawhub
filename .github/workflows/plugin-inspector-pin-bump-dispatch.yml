@@ -1,14 +1,15 @@
 name: Plugin Inspector Pin Bump Dispatch
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - package.json
-      - packages/clawhub/package.json
-      - bun.lock
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - package.json
+#       - packages/clawhub/package.json
+#       - bun.lock
+# 
 permissions:
   actions: write
   contents: read

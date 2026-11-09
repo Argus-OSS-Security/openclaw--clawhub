@@ -1,136 +1,137 @@
 name: Package Publish
 
-on:
-  workflow_call:
-    inputs:
-      source:
-        description: Package source to publish. Usually owner/repo, owner/repo@ref, or a GitHub URL.
-        required: false
-        type: string
-        default: ""
-      ref:
-        description: Optional ref to append to the source when source is not already pinned.
-        required: false
-        type: string
-      dry_run:
-        description: Preview only. When true, no publish mutation is performed.
-        required: false
-        type: boolean
-        default: true
-      json:
-        description: Emit structured JSON output.
-        required: false
-        type: boolean
-        default: true
-      wait_for_publication:
-        description: Wait for definitive publication, except v2 OpenClaw publishes finalized after the parent succeeds.
-        required: false
-        type: boolean
-        default: true
-      publication_timeout_minutes:
-        description: Maximum minutes to wait for definitive publication.
-        required: false
-        type: number
-        default: 30
-      registry:
-        description: ClawHub registry URL.
-        required: false
-        type: string
-        default: https://clawhub.ai
-      site:
-        description: ClawHub site URL.
-        required: false
-        type: string
-        default: https://clawhub.ai
-      owner:
-        description: Optional owner handle override for org/shared publishing.
-        required: false
-        type: string
-      family:
-        description: Optional package family override for legacy package rows.
-        required: false
-        type: string
-      version:
-        description: Optional package version override.
-        required: false
-        type: string
-      tags:
-        description: Optional comma-separated tags override.
-        required: false
-        type: string
-        default: latest
-      changelog:
-        description: Optional release changelog shown on ClawHub.
-        required: false
-        type: string
-      categories:
-        description: Deprecated for plugins (ignored). Declare one category in openclaw.plugin.json or omit for automatic classification. Templates retain comma-separated categories.
-        required: false
-        type: string
-      clear_categories:
-        description: Deprecated for plugins (ignored). Remove manifest categories for automatic classification. Templates retain category clearing. Cannot be combined with categories.
-        required: false
-        type: boolean
-        default: false
-      topics:
-        description: Optional comma-separated catalog topics.
-        required: false
-        type: string
-      clear_topics:
-        description: Clear existing catalog topics. Cannot be combined with topics.
-        required: false
-        type: boolean
-        default: false
-      source_repo:
-        description: Optional source repo override for local-folder publishes.
-        required: false
-        type: string
-      source_commit:
-        description: Optional source commit override for local-folder publishes.
-        required: false
-        type: string
-      source_ref:
-        description: Optional source ref override for local-folder publishes.
-        required: false
-        type: string
-      source_path:
-        description: Optional source path inside the repository for monorepo package publishes.
-        required: false
-        type: string
-      package_artifact_name:
-        description: Optional Actions artifact name containing a prebuilt ClawPack .tgz to publish.
-        required: false
-        type: string
-      package_artifact_path:
-        description: Optional path to the .tgz inside package_artifact_name. Defaults to the only .tgz in the artifact.
-        required: false
-        type: string
-      inspector_artifact_name:
-        description: Artifact name for plugin inspector reports. Set a unique value when calling this workflow from a matrix.
-        required: false
-        type: string
-        default: plugin-inspector-report
-      publish_json_artifact_name:
-        description: Artifact name for the package publish JSON output. Set a unique value when calling this workflow from a matrix.
-        required: false
-        type: string
-        default: clawhub-package-publish-json
-      trusted_tooling_identity_json:
-        description: Optional versioned trusted tooling and release-parent run identity; immutable authorization receipts are then required.
-        required: false
-        type: string
-        default: ""
-    secrets:
-      clawhub_token:
-        required: false
-    outputs:
-      publish_json:
-        description: Structured JSON output from clawhub package publish.
-        value: ${{ jobs.publish.outputs.publish_json }}
-      release_id:
-        description: Published release id when dry_run is false.
-        value: ${{ jobs.publish.outputs.release_id }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       source:
+#         description: Package source to publish. Usually owner/repo, owner/repo@ref, or a GitHub URL.
+#         required: false
+#         type: string
+#         default: ""
+#       ref:
+#         description: Optional ref to append to the source when source is not already pinned.
+#         required: false
+#         type: string
+#       dry_run:
+#         description: Preview only. When true, no publish mutation is performed.
+#         required: false
+#         type: boolean
+#         default: true
+#       json:
+#         description: Emit structured JSON output.
+#         required: false
+#         type: boolean
+#         default: true
+#       wait_for_publication:
+#         description: Wait for definitive publication, except v2 OpenClaw publishes finalized after the parent succeeds.
+#         required: false
+#         type: boolean
+#         default: true
+#       publication_timeout_minutes:
+#         description: Maximum minutes to wait for definitive publication.
+#         required: false
+#         type: number
+#         default: 30
+#       registry:
+#         description: ClawHub registry URL.
+#         required: false
+#         type: string
+#         default: https://clawhub.ai
+#       site:
+#         description: ClawHub site URL.
+#         required: false
+#         type: string
+#         default: https://clawhub.ai
+#       owner:
+#         description: Optional owner handle override for org/shared publishing.
+#         required: false
+#         type: string
+#       family:
+#         description: Optional package family override for legacy package rows.
+#         required: false
+#         type: string
+#       version:
+#         description: Optional package version override.
+#         required: false
+#         type: string
+#       tags:
+#         description: Optional comma-separated tags override.
+#         required: false
+#         type: string
+#         default: latest
+#       changelog:
+#         description: Optional release changelog shown on ClawHub.
+#         required: false
+#         type: string
+#       categories:
+#         description: Deprecated for plugins (ignored). Declare one category in openclaw.plugin.json or omit for automatic classification. Templates retain comma-separated categories.
+#         required: false
+#         type: string
+#       clear_categories:
+#         description: Deprecated for plugins (ignored). Remove manifest categories for automatic classification. Templates retain category clearing. Cannot be combined with categories.
+#         required: false
+#         type: boolean
+#         default: false
+#       topics:
+#         description: Optional comma-separated catalog topics.
+#         required: false
+#         type: string
+#       clear_topics:
+#         description: Clear existing catalog topics. Cannot be combined with topics.
+#         required: false
+#         type: boolean
+#         default: false
+#       source_repo:
+#         description: Optional source repo override for local-folder publishes.
+#         required: false
+#         type: string
+#       source_commit:
+#         description: Optional source commit override for local-folder publishes.
+#         required: false
+#         type: string
+#       source_ref:
+#         description: Optional source ref override for local-folder publishes.
+#         required: false
+#         type: string
+#       source_path:
+#         description: Optional source path inside the repository for monorepo package publishes.
+#         required: false
+#         type: string
+#       package_artifact_name:
+#         description: Optional Actions artifact name containing a prebuilt ClawPack .tgz to publish.
+#         required: false
+#         type: string
+#       package_artifact_path:
+#         description: Optional path to the .tgz inside package_artifact_name. Defaults to the only .tgz in the artifact.
+#         required: false
+#         type: string
+#       inspector_artifact_name:
+#         description: Artifact name for plugin inspector reports. Set a unique value when calling this workflow from a matrix.
+#         required: false
+#         type: string
+#         default: plugin-inspector-report
+#       publish_json_artifact_name:
+#         description: Artifact name for the package publish JSON output. Set a unique value when calling this workflow from a matrix.
+#         required: false
+#         type: string
+#         default: clawhub-package-publish-json
+#       trusted_tooling_identity_json:
+#         description: Optional versioned trusted tooling and release-parent run identity; immutable authorization receipts are then required.
+#         required: false
+#         type: string
+#         default: ""
+#     secrets:
+#       clawhub_token:
+#         required: false
+#     outputs:
+#       publish_json:
+#         description: Structured JSON output from clawhub package publish.
+#         value: ${{ jobs.publish.outputs.publish_json }}
+#       release_id:
+#         description: Published release id when dry_run is false.
+#         value: ${{ jobs.publish.outputs.release_id }}
+# 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 

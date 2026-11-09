@@ -1,13 +1,14 @@
 name: Test Template Canary Prepublication Check
 
-on:
-  workflow_dispatch:
-    inputs:
-      attempt_id:
-        description: Exact Test publish attempt ID for @openclaw/hosted-e2e-canary
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       attempt_id:
+#         description: Exact Test publish attempt ID for @openclaw/hosted-e2e-canary
+#         required: true
+#         type: string
+# 
 concurrency:
   group: test-template-canary-prepublication-${{ inputs.attempt_id }}
   cancel-in-progress: false

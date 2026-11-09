@@ -1,22 +1,23 @@
 name: ClawHub CLI NPM Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: Release tag to publish, for example v0.10.0
-        required: true
-        type: string
-      preflight_only:
-        description: Run validation/build only and skip the gated publish job
-        required: true
-        default: false
-        type: boolean
-      preflight_run_id:
-        description: Existing successful preflight workflow run id to promote without rebuilding
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       tag:
+#         description: Release tag to publish, for example v0.10.0
+#         required: true
+#         type: string
+#       preflight_only:
+#         description: Run validation/build only and skip the gated publish job
+#         required: true
+#         default: false
+#         type: boolean
+#       preflight_run_id:
+#         description: Existing successful preflight workflow run id to promote without rebuilding
+#         required: false
+#         type: string
+# 
 concurrency:
   group: clawhub-cli-npm-release-${{ inputs.tag }}
   cancel-in-progress: false
